@@ -26,19 +26,26 @@ class ExtendedContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20
+        30
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "extendedContactCell", for: indexPath)
         
         cell.backgroundColor = .systemGray4
+        var configuration = cell.defaultContentConfiguration()
+        
+        
         
         if indexPath.row == 0 {
-            cell.textLabel?.text = persones[indexPath.section].phoneNumber
+            configuration.image = UIImage(systemName: "phone")
+            configuration.text = persones[indexPath.section].phoneNumber
         } else {
-            cell.textLabel?.text = persones[indexPath.section].eMail
+            configuration.image = UIImage(systemName: "mail")
+            configuration.text = persones[indexPath.section].eMail
         }
+        cell.contentConfiguration = configuration
         return cell
     }
 }
