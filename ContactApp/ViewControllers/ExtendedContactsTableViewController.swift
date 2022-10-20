@@ -9,7 +9,7 @@ import UIKit
 
 class ExtendedContactsTableViewController: UITableViewController {
     
-    let persones = Person.getPersonalInfo()
+    private let persones = Person.getPersonalInfo()
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return persones[section].name + " " + persones[section].surName

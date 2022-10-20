@@ -28,13 +28,6 @@ struct Person {
         var person: [Person] = []
         let data = DataStore()
         
-        func processingData(value: inout [String]) -> String {
-            let randomValue = value.randomElement()
-            let index = value.firstIndex(of: randomValue ?? "")
-            value.remove(at: index ?? 0)
-            return randomValue ?? ""
-        }
-        
         for _ in 0..<data.names.count {
             person.append(
                 Person(
@@ -49,4 +42,10 @@ struct Person {
     }
 }
 
+private func processingData(value: inout [String]) -> String {
+    let randomValue = value.randomElement()
+    let index = value.firstIndex(of: randomValue ?? "")
+    value.remove(at: index ?? 0)
+    return randomValue ?? ""
+}
 

@@ -10,7 +10,7 @@ import Foundation
 
 class ContactsViewController: UITableViewController {
     
-    let persones = Person.getPersonalInfo()
+    private let persones = Person.getPersonalInfo()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let contactInfoVC = segue.destination as? ContactInfoViewController else {
