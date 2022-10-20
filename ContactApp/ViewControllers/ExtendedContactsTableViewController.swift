@@ -11,12 +11,10 @@ class ExtendedContactsTableViewController: UITableViewController {
     
     let persones = Person.getPersonalInfo()
     
-    // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return persones[section].name + " " + persones[section].surName
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         persones.count
     }
@@ -29,14 +27,11 @@ class ExtendedContactsTableViewController: UITableViewController {
         30
     }
     
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "extendedContactCell", for: indexPath)
         
         cell.backgroundColor = .systemGray4
         var configuration = cell.defaultContentConfiguration()
-        
-        
         
         if indexPath.row == 0 {
             configuration.image = UIImage(systemName: "phone")

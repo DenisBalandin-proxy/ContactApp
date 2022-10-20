@@ -13,21 +13,25 @@ class ContactsViewController: UITableViewController {
     let persones = Person.getPersonalInfo()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let contactInfoVC = segue.destination as? ContactInfoViewController else { return }
+        guard let contactInfoVC = segue.destination as? ContactInfoViewController else {
+            return
+        }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         contactInfoVC.person = persones[indexPath.row]
     }
 }
 
-// MARK: - UITableViewDataSource
 extension ContactsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         persones.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "contactCell",
+            for: indexPath
+        )
         
         let person = persones[indexPath.row]
         cell.textLabel?.text = person.name + " " + person.surName
